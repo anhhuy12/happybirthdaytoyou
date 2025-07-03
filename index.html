@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chúc mừng sinh nhật Mi</title>
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Quicksand', sans-serif;
+      background: linear-gradient(to bottom right, #ffc4e1, #ffe9f0);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      overflow: hidden;
+    }
+    h1 {
+      font-size: 2em;
+      color: #d63384;
+      margin-bottom: 1rem;
+    }
+    .keypad {
+      display: grid;
+      grid-template-columns: repeat(3, 60px);
+      gap: 10px;
+    }
+    .keypad button {
+      width: 60px;
+      height: 60px;
+      font-size: 1.5em;
+      border: none;
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+      cursor: pointer;
+      transition: transform 0.1s;
+    }
+    .keypad button:active {
+      transform: scale(0.95);
+    }
+    #passwordDisplay {
+      margin-bottom: 1rem;
+      font-size: 1.2em;
+      letter-spacing: 5px;
+    }
+    #message {
+      margin-top: 1rem;
+      color: red;
+    }
+    audio { display: none; }
+  </style>
+</head>
+<body>
+  <h1>Nhập mật khẩu sinh nhật</h1>
+  <div id="passwordDisplay"></div>
+  <div class="keypad">
+    <button onclick="pressKey('1')">1</button>
+    <button onclick="pressKey('2')">2</button>
+    <button onclick="pressKey('3')">3</button>
+    <button onclick="pressKey('4')">4</button>
+    <button onclick="pressKey('5')">5</button>
+    <button onclick="pressKey('6')">6</button>
+    <button onclick="pressKey('7')">7</button>
+    <button onclick="pressKey('8')">8</button>
+    <button onclick="pressKey('9')">9</button>
+    <button onclick="clearPassword()">C</button>
+    <button onclick="pressKey('0')">0</button>
+    <button onclick="submitPassword()">OK</button>
+  </div>
+  <div id="message"></div>
+  <audio autoplay loop>
+    <source src="https://cdn.pixabay.com/audio/2022/03/15/audio_3a3b2e2a58.mp3" type="audio/mpeg">
+  </audio>
+
+  <script>
+    let password = "";
+    const correctPassword = "07072008";
+
+    function pressKey(num) {
+      if (password.length < 8) {
+        password += num;
+        document.getElementById("passwordDisplay").innerText = password.replace(/./g, '*');
+      }
+    }
+
+    function clearPassword() {
+      password = "";
+      document.getElementById("passwordDisplay").innerText = "";
+      document.getElementById("message").innerText = "";
+    }
+
+    function submitPassword() {
+      if (password === correctPassword) {
+        window.location.href = "page2.html";
+      } else {
+        document.getElementById("message").innerText = "Sai mật khẩu rồi, thử lại nhé!";
+      }
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Bóng bay và thư</title>
+  <style>
+    * {
+      margin: 0; padding: 0; box-sizing: border-box;
+    }
+    body {
+      font-family: 'Quicksand', sans-serif;
+      background: #fff0f6;
+      overflow: hidden;
+      height: 100vh;
+      position: relative;
+    }
+    .balloon {
+      width: 60px; height: 80px;
+      background: pink;
+      border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+      position: absolute;
+      cursor: pointer;
+      box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+    }
+    .letter {
+      position: fixed;
+      top: 50%; left: 50%; transform: translate(-50%, -50%);
+      background: white;
+      padding: 20px;
+      border-radius: 15px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.2);
+      z-index: 100;
+      display: none;
+      text-align: center;
+    }
+    .overlay {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0, 0, 0, 0.5);
+      display: none;
+      z-index: 50;
+    }
+    #finalBtn {
+      display: none;
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      padding: 10px 20px;
+      background: #ff4da6;
+      color: white;
+      font-size: 1.2em;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div class="overlay" id="overlay"></div>
+  <div class="letter" id="letterBox">Nội dung thư ở đây</div>
+  <button id="finalBtn" onclick="location.href='page5.html'">Đến điều cuối cùng 💖</button>
+
+  <script>
+    const messages = [
+      "Chúc Mi luôn vui vẻ và hạnh phúc với mọi người trong gia đình nhé!", "Chúc Mi ngày càng trưởng thành hơn , tuổi mới chững chạc hơn nè", "Mỗi một ngày trôi qua sẽ là một kỷ niệm đáng nhớ nhé ", "Luôn được mọi người xung quanh yêu thương và quý mến",
+      "Chúc em luôn thành công trên con đường em chọn", "Mãi luôn tỏa sáng", "Luôn mạnh mẽ", "Tự tin vào chính mình",
+      "Đừng quên là luôn nở một nụ cười thật tươi trên môi nha!", "Ngày càng xinh đẹp hơn nữa !", "Cảm ơn em đã góp mặt trong cuộc đời của anh", "Em là một người đặc biệt!",
+      "Là người anh sẽ mãi yêu thương!", "Sinh nhật thật ý nghĩa nhé!", "Thêm một tuổi, thêm hạnh phúc!",
+      "Mọi điều ước đều thành hiện thực!", "Hãy luôn là chính mình!"
+    ];
+
+    let shown = 0;
+    for (let i = 0; i < 17; i++) {
+      const b = document.createElement("div");
+      b.className = "balloon";
+      b.style.left = Math.random() * (window.innerWidth - 60) + "px";
+      b.style.top = Math.random() * (window.innerHeight - 80) + "px";
+      b.addEventListener("click", () => {
+        document.getElementById("letterBox").style.display = "block";
+        document.getElementById("overlay").style.display = "block";
+        document.getElementById("letterBox").innerText = messages[i];
+        shown++;
+        b.remove();
+        if (shown === 17) {
+          document.getElementById("finalBtn").style.display = "block";
+        }
+      });
+      document.body.appendChild(b);
+    }
+
+    document.getElementById("overlay").addEventListener("click", () => {
+      document.getElementById("letterBox").style.display = "none";
+      document.getElementById("overlay").style.display = "none";
+    });
+  </script>
+</body>
+</html>
