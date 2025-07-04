@@ -51,7 +51,7 @@
   <canvas id="fireworks"></canvas>
   <canvas id="heartCanvas" width="500" height="500"></canvas>
   <canvas id="heartCanvas2" width="500" height="500"></canvas>
-  <h1>Chúc mừng sinh nhật em , người anh yêu 💖</h1>
+  <h1>Chúc mừng sinh nhật em 💖</h1>
 
   <script>
     // Fireworks
@@ -135,5 +135,17 @@
     createHeartAnimation("heartCanvas");
     createHeartAnimation("heartCanvas2");
   </script>
+  <audio id="bgMusic" autoplay loop>
+  <source src="https://anhhuy12.github.io/happybirthdaytoyou/audio/music.mp3" type="audio/mpeg">
+</audio>
+<script>
+  const audio = document.getElementById("bgMusic");
+  window.addEventListener("load", () => {
+    audio.play().catch(err => {
+      console.log("Trình duyệt chặn autoplay:", err);
+    });
+  });
+</script>
+
 </body>
 </html>
