@@ -107,9 +107,10 @@
   const audio = document.getElementById("bgMusic");
   window.addEventListener("load", () => {
     audio.play().catch(err => {
-      console.log("Autoplay bị chặn:", err);
+      console.log("Trình duyệt chặn autoplay:", err);
     });
   });
 </script>
+
 </body>
 </html>
