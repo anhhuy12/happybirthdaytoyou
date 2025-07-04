@@ -71,9 +71,17 @@
     <button onclick="submitPassword()">OK</button>
   </div>
   <div id="message"></div>
-  <audio autoplay loop>
-    <source src="https://cdn.pixabay.com/audio/2022/03/15/audio_3a3b2e2a58.mp3" type="audio/mpeg">
-  </audio>
+  <audio id="bgMusic" autoplay loop>
+  <source src="https://anhhuy12.github.io/happybirthdaytoyou/audio/music.mp3" type="audio/mpeg">
+</audio>
+<script>
+  const audio = document.getElementById("bgMusic");
+  window.addEventListener("load", () => {
+    audio.play().catch(err => {
+      console.log("Trình duyệt chặn autoplay:", err);
+    });
+  });
+</script>
 
   <script>
     let password = "";
@@ -100,17 +108,5 @@
       }
     }
   </script>
- <audio id="bgMusic" autoplay loop>
-  <source src="https://anhhuy12.github.io/happybirthdaytoyou/audio/music.mp3" type="audio/mpeg">
-</audio>
-<script>
-  const audio = document.getElementById("bgMusic");
-  window.addEventListener("load", () => {
-    audio.play().catch(err => {
-      console.log("Trình duyệt chặn autoplay:", err);
-    });
-  });
-</script>
-
 </body>
 </html>
