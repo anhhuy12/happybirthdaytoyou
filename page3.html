@@ -51,5 +51,17 @@
       }
     }, 1000);
   </script>
+  <audio id="bgMusic" autoplay loop>
+  <source src="https://anhhuy12.github.io/happybirthdaytoyou/audio/music.mp3" type="audio/mpeg">
+</audio>
+<script>
+  const audio = document.getElementById("bgMusic");
+  window.addEventListener("load", () => {
+    audio.play().catch(err => {
+      console.log("Trình duyệt chặn autoplay:", err);
+    });
+  });
+</script>
+
 </body>
 </html>
